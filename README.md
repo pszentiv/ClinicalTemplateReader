@@ -2,13 +2,13 @@
 The following is an example of using the ClinicalTemplateReder for automated planning. 
 Start by generated a Stand-alone executable with the Eclipse Script Wizard
 
-![Script Wizard](https://github.com/WUSTL-ClinicalDev/ClinicalTemplateReader/blob/master/ClinicalTemplateReader/DescriptionImages/ScriptWizard.JPG)
+![Script Wizard](ClinicalTemplateReader/DescriptionImages/ScriptWizard.JPG)
 
 ## Save your solution!
 Change your target framework to **.NET 4.5.2.**
 Go to the Nuget Package Manager and find the **ClinicalTemplateReader** package. You may find this by searching ESAPI. 
 
-![Nuget](https://github.com/WUSTL-ClinicalDev/ClinicalTemplateReader/blob/master/ClinicalTemplateReader/DescriptionImages/NugetPackage.JPG)
+![Nuget](ClinicalTemplateReader/DescriptionImages/NugetPackage.JPG)
 
 Add the following using to your code to resolve the ClinicalTemplateReader related references:
 ```csharp
@@ -23,7 +23,7 @@ static void Execute(Application app)
 {
     //Checking clinical templates
     Console.WriteLine("Reading Clinical Templates");
-    string server = "Varian Image Server"; // <== update to your image server address e.g. localhost, 10.11.12.13
+    string server = "Varian Image Server"; // <== update to your image server address e.g. "localhost", "10.11.12.13"
     var clinicalProtols = new ClinicalTemplate(server);
 
     var planStats_cp = clinicalProtols.GetPlanTemplateApprovals(true);
@@ -46,7 +46,7 @@ static void Execute(Application app)
 
 Running this should give the following response in the console.
 
-![Template Summary](https://github.com/WUSTL-ClinicalDev/ClinicalTemplateReader/blob/master/ClinicalTemplateReader/DescriptionImages/ApprovedTemplates.JPG)
+![Template Summary](ClinicalTemplateReader/DescriptionImages/ApprovedTemplates.JPG)
 
 ## Selecting a plan template
 The following code will allow you to select a plan template.
@@ -55,7 +55,7 @@ The following code will allow you to select a plan template.
 static void Execute(Application app)
 {
     // Checking clinical templates
-    string server = "Varian Image Server"; // <== update to your image server address e.g. localhost, 10.11.12.13
+    string server = "Varian Image Server"; // <== update to your image server address e.g. "localhost", "10.11.12.13"
     var clinicalProtols = new ClinicalTemplate(server);
 
     var approvedTemplates = clinicalProtols.PlanTemplates.Where(x => x.Preview.ApprovalStatus.Contains("Approved")).ToList();
@@ -80,7 +80,7 @@ static void Execute(Application app)
 
 The result:
 
-![Select Template](https://github.com/WUSTL-ClinicalDev/ClinicalTemplateReader/blob/master/ClinicalTemplateReader/DescriptionImages/PickATemplate.JPG)
+![Select Template](ClinicalTemplateReader/DescriptionImages/PickATemplate.JPG)
 
 ## Generating a plan from a template.
 Finally, the following code will utilize the ClinicalTemplateReader API to generate an automated plan.
@@ -89,7 +89,7 @@ Finally, the following code will utilize the ClinicalTemplateReader API to gener
 static void Execute(Application app)
 {
     // Generate plan from template
-    string server = "Varian Image Server"; // <== update to your image server address e.g. localhost, 10.11.12.13
+    string server = "Varian Image Server"; // <== update to your image server address e.g. "localhost", "10.11.12.13"
     var clinicalProtols = new ClinicalTemplate(server);
 
     var approvedTemplates = clinicalProtols.PlanTemplates.Where(x => x.Preview.ApprovalStatus.Contains("Approved")).ToList();
@@ -118,9 +118,9 @@ To execute this part you must add the following attribute to your code:
 
 The response from the console should be as follows. 
 
-![PlanResponse](https://github.com/WUSTL-ClinicalDev/ClinicalTemplateReader/blob/master/ClinicalTemplateReader/DescriptionImages/PlanGenerated.JPG)
+![PlanResponse](ClinicalTemplateReader/DescriptionImages/PlanGenerated.JPG)
 
 After refreshing the patient in Eclipse, you should see a new course, plan, and fields generated on the patient.
 
-![NewPlan](https://github.com/WUSTL-ClinicalDev/ClinicalTemplateReader/blob/master/ClinicalTemplateReader/DescriptionImages/NewPlanGenerated.JPG)
+![NewPlan](ClinicalTemplateReader/DescriptionImages/NewPlanGenerated.JPG)
 
